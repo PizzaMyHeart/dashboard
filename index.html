@@ -1,22 +1,75 @@
 <html>
 	<head>
+		<script src='https://darkskyapp.github.io/skycons/skycons.js'></script>
 		<title>Dashboard</title>
 	</head>
 
 	<body>
 		<h2>Welcome, Ian.</h2>
+		
+		<div>Currently</div>
+		<canvas id='icon-currently'></canvas>
+		<div id='current-weather'></div>
+		<span id='current-temp'></span>
+		<div id='minutely-summary'></div>
+		<div id='hourly-summary'></div>
+		<div>Today's forecast</div>
+		<canvas id='icon-today'></canvas>
+		<div id='today-weather'></div>
+		<div id='today-temp'></div>
+		<div id='today-summary'></div>
+		<div>Hourly</div>
+
+		<div>This week</div>
+		<div id='one-day-after'>
+			<div class='day'></div>
+			<div class='temp-high'><img src='/assets/svg/Sun.svg'><div></div></div>
+			<div class='temp-low'><img src='/assets/svg/Moon.svg'><div></div></div>
+		</div>
+		<div id='two-day-after'>
+			<div class='day'></div>
+			<div class='temp-high'><img src='/assets/svg/Sun.svg'><div></div></div>
+			<div class='temp-low'><img src='/assets/svg/Moon.svg'><div></div></div>
+		</div>
+		<div id='three-day-after'>
+			<div class='day'></div>
+			<div class='temp-high'><img src='/assets/svg/Sun.svg'><div></div></div>
+			<div class='temp-low'><img src='/assets/svg/Moon.svg'><div></div></div>
+		</div>
+		<div id='four-day-after'>
+			<div class='day'></div>
+			<div class='temp-high'><img src='/assets/svg/Sun.svg'><div></div></div>
+			<div class='temp-low'><img src='/assets/svg/Moon.svg'><div></div></div>
+		</div>
+		<div id='five-day-after'>
+			<div class='day'></div>
+			<div class='temp-high'><img src='/assets/svg/Sun.svg'><div></div></div>
+			<div class='temp-low'><img src='/assets/svg/Moon.svg'><div></div></div>
+		</div>
+		<div id='six-day-after'>
+			<div class='day'></div>
+			<div class='temp-high'><img src='/assets/svg/Sun.svg'><div></div></div>
+			<div class='temp-low'><img src='/assets/svg/Moon.svg'><div></div></div>
+		</div>
+		<div id='seven-day-after'>
+			<div class='day'></div>
+			<div class='temp-high'><img src='/assets/svg/Sun.svg'><div></div></div>
+			<div class='temp-low'><img src='/assets/svg/Moon.svg'><div></div></div>
+		</div>
+		<div id=''></div>
+		<div id=''></div>
+		<div>TfL status</div>
+		<div id='tube'></div>
+		<div id='bus24'></div>
+		<div id=''></div>
+		<div id='bus134'></div>
+		<div id='silverdale'></div>
+		<div id='rf'></div>
+		<div id='whit'></div>
 		<div>Top news in Malaysia</div>
 		<div id='malaysia'></div>
 		<div>Top news in BBC</div>
 		<div id='bbc'></div>
-		<div>TfL status</div>
-		<div id='tfl'></div>
-		<div id='rf'></div>
-		<div id='whit'></div>
-		<div>Currently</div>
-		<div id='current-weather'></div>
-		<div id=''></div>
-
 		<script src='script.js'></script>
 	</body>
 
