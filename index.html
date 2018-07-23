@@ -7,67 +7,87 @@
 
 	<body>
 		<h1>Welcome, Ian.</h1>
-		<div></div>
-		
-		<div>Currently</div>
-		<canvas id='icon-currently'></canvas>
-		<div id='current-weather'></div>
-		<span id='current-temp'></span>
-		<div id='minutely-summary'></div>
-		<div id='hourly-summary'></div>
-		<div>Today's forecast</div>
-		<canvas id='icon-today'></canvas>
-		<div id='today-weather'></div>
-		<div id='today-temp'></div>
 		<div id='today-summary'></div>
-		<div>Hourly</div>
+		<div id='weather-container'>
+			<div id='current-weather-container'>
+				<div id='current-time'></div>
+				<canvas id='icon-currently'></canvas>
+				<div id='current-weather'></div>
+				<div id='current-temp'></div>
+			</div>
+			<div>
+				<div>Today's forecast</div>
+				<canvas id='icon-today'></canvas>
+			</div>
+			
+			<div id='minutely-summary'></div>
+			<div id='hourly-summary'></div>
+	
+		</div>
+		<div id='week-forecast'></div>
+		<div id='this-week'>
+			<div id='one-day-after'>
+				<div class='day'></div>
+				<canvas class='icon-day'></canvas>
+				<div class='temp-high'><img src='/assets/svg/Sun.svg' class='climacons'><div></div></div>
+				<div class='temp-low'><img src='/assets/svg/Moon.svg' class='climacons'><div></div></div>
+			</div>
+			<div id='two-day-after'>
+				<div class='day'></div>
+				<canvas class='icon-day'></canvas>
+				<div class='temp-high'><img src='/assets/svg/Sun.svg' class='climacons'><div></div></div>
+				<div class='temp-low'><img src='/assets/svg/Moon.svg' class='climacons'><div></div></div>
+			</div>
+			<div id='three-day-after'>
+				<div class='day'></div>
+				<canvas class='icon-day'></canvas>
+				<div class='temp-high'><img src='/assets/svg/Sun.svg' class='climacons'><div></div></div>
+				<div class='temp-low'><img src='/assets/svg/Moon.svg' class='climacons'><div></div></div>
+			</div>
+			<div id='four-day-after'>
+				<div class='day'></div>
+				<canvas class='icon-day'></canvas>
+				<div class='temp-high'><img src='/assets/svg/Sun.svg' class='climacons'><div></div></div>
+				<div class='temp-low'><img src='/assets/svg/Moon.svg' class='climacons'><div></div></div>
+			</div>
+			<div id='five-day-after'>
+				<div class='day'></div>
+				<canvas class='icon-day'></canvas>
+				<div class='temp-high'><img src='/assets/svg/Sun.svg' class='climacons'><div></div></div>
+				<div class='temp-low'><img src='/assets/svg/Moon.svg' class='climacons'><div></div></div>
+			</div>
+			<div id='six-day-after'>
+				<div class='day'></div>
+				<canvas class='icon-day'></canvas>
+				<div class='temp-high'><img src='/assets/svg/Sun.svg' class='climacons'><div></div></div>
+				<div class='temp-low'><img src='/assets/svg/Moon.svg' class='climacons'><div></div></div>
+			</div>
+			<div id='seven-day-after'>
+				<div class='day'></div>
+				<canvas class='icon-day'></canvas>
+				<div class='temp-high'><img src='/assets/svg/Sun.svg' class='climacons'><div></div></div>
+				<div class='temp-low'><img src='/assets/svg/Moon.svg' class='climacons'><div></div></div>
+			</div>
+		</div>
 
-		<div>This week</div>
-		<div id='one-day-after'>
-			<div class='day'></div>
-			<div class='temp-high'><img src='/assets/svg/Sun.svg'><div></div></div>
-			<div class='temp-low'><img src='/assets/svg/Moon.svg'><div></div></div>
+		<div id='travel-container'>
+			<div id='travel-status'>
+				<div id='tube'></div>
+				<div id='bus24'></div>
+				<div id='bus134'></div>
+			</div>
+			<div id='arrival-time'>
+				<div id='silverdale'></div>
+			</div>
+			<div id='travel-time'>
+				<div id='rf'></div>
+				<div id='whit'></div>
+			</div>	
 		</div>
-		<div id='two-day-after'>
-			<div class='day'></div>
-			<div class='temp-high'><img src='/assets/svg/Sun.svg'><div></div></div>
-			<div class='temp-low'><img src='/assets/svg/Moon.svg'><div></div></div>
-		</div>
-		<div id='three-day-after'>
-			<div class='day'></div>
-			<div class='temp-high'><img src='/assets/svg/Sun.svg'><div></div></div>
-			<div class='temp-low'><img src='/assets/svg/Moon.svg'><div></div></div>
-		</div>
-		<div id='four-day-after'>
-			<div class='day'></div>
-			<div class='temp-high'><img src='/assets/svg/Sun.svg'><div></div></div>
-			<div class='temp-low'><img src='/assets/svg/Moon.svg'><div></div></div>
-		</div>
-		<div id='five-day-after'>
-			<div class='day'></div>
-			<div class='temp-high'><img src='/assets/svg/Sun.svg'><div></div></div>
-			<div class='temp-low'><img src='/assets/svg/Moon.svg'><div></div></div>
-		</div>
-		<div id='six-day-after'>
-			<div class='day'></div>
-			<div class='temp-high'><img src='/assets/svg/Sun.svg'><div></div></div>
-			<div class='temp-low'><img src='/assets/svg/Moon.svg'><div></div></div>
-		</div>
-		<div id='seven-day-after'>
-			<div class='day'></div>
-			<div class='temp-high'><img src='/assets/svg/Sun.svg'><div></div></div>
-			<div class='temp-low'><img src='/assets/svg/Moon.svg'><div></div></div>
-		</div>
-		<div id=''></div>
-		<div id=''></div>
-		<div>TfL status</div>
-		<div id='tube'></div>
-		<div id='bus24'></div>
-		<div id=''></div>
-		<div id='bus134'></div>
-		<div id='silverdale'></div>
-		<div id='rf'></div>
-		<div id='whit'></div>
+		
+		
+		
+		
 
 		<div class='ticker-wrap'>
 			<div class='ticker' id='news-container'></div>

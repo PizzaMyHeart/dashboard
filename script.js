@@ -3,17 +3,21 @@ const rf = document.getElementById('rf');
 const whit = document.getElementById('whit');
 const current_weather = document.getElementById('current-weather');
 const icon_currently = document.getElementById('icon-currently');
+const icon_today = document.getElementById('icon-today');
 const current_temp = document.getElementById('current-temp');
 const minutely_summary = document.getElementById('minutely-summary');
 const hourly_summary = document.getElementById('hourly-summary');
 const today_summary = document.getElementById('today-summary');
+const week_forecast = document.getElementById('week-forecast');
 const coming_week = ['one-day-after', 'two-day-after', 'three-day-after', 
 					'four-day-after', 'five-day-after', 'six-day-after', 'seven-day-after'];
 const silverdale = document.getElementById('silverdale');
 const news_container = document.getElementById('news-container');
+const current_time = document.getElementById('current-time');
 
 window.onload = function() {
 	getNews(); getTube(); getrf(); getwhit(); getweather(); getBus(); getSilverdale();
+	getTime();
 }
 
 // Get top headlines 
@@ -28,7 +32,6 @@ function getNews() {
 		.then(data => {
 			for (let i = 0; i < data.articles.length; i++) {
 				let news = document.createElement('div');
-				console.log(news.innerHTML);
 				news.innerHTML = data.articles[i].title;
 				news.classList.add('ticker__item');
 				news_container.appendChild(news);
@@ -113,7 +116,6 @@ function getSilverdale() {
 		.then(data => {
 			for (let i = 0; i < data.length; i++) {
 				if (data[i].lineId == '24' || data[i].lineId == '134') {
-					console.log(data[i].timeToStation);
 					const text = document.createElement('P');
 					text.innerHTML = data[i].lineId + ' - ' + (Math.round(data[i].timeToStation / 60)) + 'mins';
 					silverdale.appendChild(text);
@@ -181,7 +183,7 @@ function getweather() {
 		.then(resp => resp.json())
 		.then(data => {
 			var iconRequest = data.currently.icon;
-			console.log(iconRequest);
+			var iconToday = data.hourly.icon;
 			var icons = new Skycons({'color': '#000000'});
 			var iconList = [
 				"clear-day",
@@ -199,29 +201,49 @@ function getweather() {
 				if (iconRequest == iconList[i]) {
 					icons.set(icon_currently, iconList[i]);
 				}
+				if (iconToday == iconList[i]) {
+					icons.set(icon_today, iconList[i]);
+				}
 			}
-			icons.play();
+			
 			current_weather.innerHTML = data.currently.summary + ' now.';
-			current_temp.innerHTML = data.currently.temperature;
+			current_temp.innerHTML = data.currently.temperature.toFixed(1) + '&#8451;';
 			minutely_summary.innerHTML = data.minutely.summary;
-			hourly_summary.innerHTML = data.hourly.summary;
-			today_summary.innerHTML = data.daily.summary;
+			today_summary.innerHTML = data.hourly.summary;
+			week_forecast.innerHTML = 'This week\'s forecast: ' + data.daily.summary;
 			// Populate days of the coming week
 			for (let i = 0; i < 7; i++) {
 				var time = new Date(data.daily.data[i+1].time*1000).toString().split(' ');
 				var day = time.slice(0,4);
 				day = day[0] + ' ' + day[1] + ' ' + day[2];
 				document.getElementById(coming_week[i]).children[0].innerHTML = day;
-				document.getElementById(coming_week[i]).children[1].children[1].innerHTML = data.daily.data[i+1].temperatureHigh;
-				document.getElementById(coming_week[i]).children[2].children[1].innerHTML = data.daily.data[i+1].temperatureLow;
+				document.getElementById(coming_week[i]).children[2].children[1].innerHTML = data.daily.data[i+1].temperatureHigh.toFixed(1) + '&#8451;';
+				document.getElementById(coming_week[i]).children[3].children[1].innerHTML = data.daily.data[i+1].temperatureLow.toFixed(1) + '&#8451;';
+				var icon_day = document.getElementById(coming_week[i]).children[1];
+				var iconDay = data.daily.data[i+1].icon;
+				for (let i = 0; i < iconList.length; i++) {
+					if (iconDay == iconList[i]) {
+						icons.set(icon_day, iconList[i]);
+					}
+				}
 			}
 
-
+			icons.play();
 			setTimeout(getweather, 90000);
 		})
 		.catch(function(err) {
 			console.error(err);
 		});
+}
+
+
+// Show current time
+function getTime(){
+	var time = new Date().toString().split(' ');
+	time = time.slice(0,5);
+	time = time[0] + ' ' + time[1] + ' ' + time[2] + ' ' + time[3] + ' ' + time[4] + ' ';
+	current_time.innerHTML = time;
+	setTimeout(getTime, 1000);
 }
 
 /*

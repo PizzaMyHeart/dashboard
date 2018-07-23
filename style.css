@@ -25,15 +25,15 @@
   bottom: 0;
   width: 100%;
   overflow: hidden;
-  height: 4rem;
+  height: 2rem;
   background-color: rgba(0, 0, 0, 0.9);
   padding-left: 100%;
 }
 
 .ticker {
   display: inline-block;
-  height: 4rem;
-  line-height: 4rem;
+  height: 2rem;
+  line-height: 2rem;
   white-space: nowrap;
   padding-right: 100%;
   -webkit-animation-iteration-count: infinite;
@@ -48,14 +48,53 @@
 .ticker__item {
   display: inline-block;
   padding: 0 2rem;
-  font-size: 2rem;
   color: white;
+}
+
+
+#weather-container {
+	display: flex;
+	flex-flow: row wrap
+}
+
+#weather-container > div {
+	border-style: solid;
+}
+
+#travel-container {
+	display: flex;
+	flex-flow: row wrap
+}
+
+.climacons {
+	height: 10%;
+	width: 50%
+}
+
+.icon_day {
+	height: 10%;
+	width: 10%;
+}
+
+#this-week {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.day {
+	text-align: center;
+}
+
+.temp-high {
+	display: flex;
+}
+
+.temp-low {
+	display: flex;
 }
 
 body {
   padding-bottom: 5rem;
 }
 
-h1, h2, p {
-  padding: 0 5%;
-}
+
