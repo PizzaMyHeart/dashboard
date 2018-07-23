@@ -1,5 +1,3 @@
-const malaysia = document.getElementById('malaysia');
-const bbc = document.getElementById('bbc');
 const tube = document.getElementById('tube');
 const rf = document.getElementById('rf');
 const whit = document.getElementById('whit');
@@ -12,59 +10,37 @@ const today_summary = document.getElementById('today-summary');
 const coming_week = ['one-day-after', 'two-day-after', 'three-day-after', 
 					'four-day-after', 'five-day-after', 'six-day-after', 'seven-day-after'];
 const silverdale = document.getElementById('silverdale');
+const news_container = document.getElementById('news-container');
 
 window.onload = function() {
-	getMalaysia(); getBBC(); getTube(); getrf(); getwhit(); getweather(); getBus(); getSilverdale();
+	getNews(); getTube(); getrf(); getwhit(); getweather(); getBus(); getSilverdale();
 }
 
-
-// Get top news from Malaysia
-function getMalaysia() {
-	let = 1;
+// Get top headlines 
+function getNews() {
 	console.log('getMalaysia running');
-	let url = 'https://newsapi.org/v2/top-headlines?country=my&apiKey=0b32f80b79b04fc796d5fd8bba132fcf';
+	if (news_container.hasChildNodes()) {
+		news_container.innerHTML = '';
+	}
+	let url = 'https://newsapi.org/v2/top-headlines?sources=bbc-news,associated-press,reuters,al-jazeera-english,the-economist&apiKey=0b32f80b79b04fc796d5fd8bba132fcf';
 	fetch(url, { method: 'get' })
 		.then(resp => resp.json())
 		.then(data => {
 			for (let i = 0; i < data.articles.length; i++) {
-				const text = document.createElement('P');
-				text.innerHTML = data.articles[i].title + '\n';
-				if (malaysia.childNodes[i]) {
-					malaysia.childNodes[i].innerHTML = data.articles[i].title + '\n';
-				} else {
-					malaysia.appendChild(text);
-				};
+				let news = document.createElement('div');
+				console.log(news.innerHTML);
+				news.innerHTML = data.articles[i].title;
+				news.classList.add('ticker__item');
+				news_container.appendChild(news);
 			};
-			setTimeout(getMalaysia, 90000);
+			setTimeout(getNews, 90000);
 		})
 		.catch(function(err) {
 			console.error(err);
 		});
 }
 
-// Get top news from BBC
-function getBBC() {
-	let = 1;
-	console.log('getBBC running');
-	let url = 'https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=0b32f80b79b04fc796d5fd8bba132fcf';
-	fetch(url, { method: 'get' })
-		.then(resp => resp.json())
-		.then(data => {
-			for (let i = 0; i < data.articles.length; i++) {
-				const text = document.createElement('P');
-				text.innerHTML = data.articles[i].title + '\n';
-				if (bbc.childNodes[i]) {
-					bbc.childNodes[i].innerHTML = data.articles[i].title + '\n';
-				} else {
-					bbc.appendChild(text);
-				};
-			};
-			setTimeout(getBBC, 90000);
-		})
-		.catch(function(err) {
-			console.error(err);
-		});
-}
+
 
 // Get Tube line statuses
 function getTube() {
@@ -141,7 +117,6 @@ function getSilverdale() {
 					const text = document.createElement('P');
 					text.innerHTML = data[i].lineId + ' - ' + (Math.round(data[i].timeToStation / 60)) + 'mins';
 					silverdale.appendChild(text);
-					console.log('appended');
 				}	
 			};
 			setTimeout(getSilverdale, 300000);
@@ -249,3 +224,54 @@ function getweather() {
 		});
 }
 
+/*
+// Get top news from Malaysia
+function getMalaysia() {
+	console.log('getMalaysia running');
+	if (malaysia.hasChildNodes()) {
+		malaysia.innerHTML = '';
+	}
+	let url = 'https://newsapi.org/v2/top-headlines?country=my&apiKey=0b32f80b79b04fc796d5fd8bba132fcf';
+	fetch(url, { method: 'get' })
+		.then(resp => resp.json())
+		.then(data => {
+			for (let i = 0; i < data.articles.length; i++) {
+				let news = document.createElement('div');
+				console.log(news.innerHTML);
+				news.innerHTML = data.articles[i].title;
+				news.classList.add('ticker__item');
+				malaysia.appendChild(news);
+			};
+			setTimeout(getMalaysia, 90000);
+		})
+		.catch(function(err) {
+			console.error(err);
+		});
+}
+*/
+
+/*
+// Get top news from BBC
+function getBBC() {
+	if (bbc.hasChildNodes()) {
+		bbc.innerHTML = '';
+	}
+	console.log('getBBC running');
+	let url = 'https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=0b32f80b79b04fc796d5fd8bba132fcf';
+	fetch(url, { method: 'get' })
+		.then(resp => resp.json())
+		.then(data => {
+			for (let i = 0; i < data.articles.length; i++) {
+				let news = document.createElement('div');
+				console.log(news.innerHTML);
+				news.innerHTML = data.articles[i].title;
+				news.classList.add('ticker__item');
+				bbc.appendChild(news);
+			};
+			setTimeout(getBBC, 90000);
+		})
+		.catch(function(err) {
+			console.error(err);
+		});
+}
+*/

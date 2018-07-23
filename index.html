@@ -1,11 +1,13 @@
 <html>
 	<head>
 		<script src='https://darkskyapp.github.io/skycons/skycons.js'></script>
+		<link rel='stylesheet' type='text/css' href='style.css'>
 		<title>Dashboard</title>
 	</head>
 
 	<body>
-		<h2>Welcome, Ian.</h2>
+		<h1>Welcome, Ian.</h1>
+		<div></div>
 		
 		<div>Currently</div>
 		<canvas id='icon-currently'></canvas>
@@ -66,10 +68,17 @@
 		<div id='silverdale'></div>
 		<div id='rf'></div>
 		<div id='whit'></div>
-		<div>Top news in Malaysia</div>
-		<div id='malaysia'></div>
-		<div>Top news in BBC</div>
-		<div id='bbc'></div>
+
+		<div class='ticker-wrap'>
+			<div class='ticker' id='news-container'></div>
+		</div>
+		
+
+
+
+
+		
+
 		<script src='script.js'></script>
 	</body>
 
