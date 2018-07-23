@@ -6,13 +6,13 @@ const icon_currently = document.getElementById('icon-currently');
 const icon_today = document.getElementById('icon-today');
 const current_temp = document.getElementById('current-temp');
 const minutely_summary = document.getElementById('minutely-summary');
-const hourly_summary = document.getElementById('hourly-summary');
 const today_summary = document.getElementById('today-summary');
 const week_forecast = document.getElementById('week-forecast');
 const coming_week = ['one-day-after', 'two-day-after', 'three-day-after', 
 					'four-day-after', 'five-day-after', 'six-day-after', 'seven-day-after'];
 const silverdale = document.getElementById('silverdale');
 const news_container = document.getElementById('news-container');
+const current_date = document.getElementById('current-date');
 const current_time = document.getElementById('current-time');
 
 window.onload = function() {
@@ -47,17 +47,16 @@ function getNews() {
 
 // Get Tube line statuses
 function getTube() {
-	let = 1;
 	console.log('getTube running');
 	let url = 'https://api.tfl.gov.uk/line/mode/tube/status?app_id=0004335c&app_key=4bd90a297d190a588facaa6db5e1be16';
 	fetch(url, { method: 'get' })
 		.then(resp => resp.json())
 		.then(data => {
 			for (let i = 0; i < data.length; i++) {
-				const text = document.createElement('P');
-				text.innerHTML = data[i].name + ' - ' + data[i].lineStatuses[0].statusSeverityDescription + '\n';
+				const text = document.createElement('div');
+				text.innerHTML = data[i].name + ' - ' + data[i].lineStatuses[0].statusSeverityDescription;
 				if (tube.childNodes[i]) {
-					tube.childNodes[i].innerHTML = data[i].name + ' - ' + data[i].lineStatuses[0].statusSeverityDescription + '\n';
+					tube.childNodes[i].innerHTML = data[i].name + ' - ' + data[i].lineStatuses[0].statusSeverityDescription;
 				} else {
 					tube.appendChild(text);
 				};
@@ -71,29 +70,22 @@ function getTube() {
 
 // Get bus status
 function getBus() {
-	if (bus24.hasChildNodes()) {
-		for (let i = 0; i < bus24.childNodes.length; i++) {
-			bus24.removeChild(bus24.childNodes[i]);
-		}
-	} 
-	if (bus134.hasChildNodes()) {
-		for (let i = 0; i < bus134.childNodes.length; i++) {
-			bus134.removeChild(bus134.childNodes[i]);
-		}
-	}
+	bus24.classList.add('hidden');
+	bus134.classList.add('hidden');
 	console.log('getBus running');
 	let url = 'https://api.tfl.gov.uk/line/mode/bus/status?app_id=0004335c&app_key=4bd90a297d190a588facaa6db5e1be16';
 	fetch(url, { method: 'get' })
 		.then(resp => resp.json())
 		.then(data => {
 			for (let i = 0; i < data.length; i++) {
-				const text = document.createElement('P');
 				if (data[i].name == '24') {
-					text.innerHTML = data[i].name + ' - ' + data[i].lineStatuses[0].statusSeverityDescription + '\n';
-					bus24.appendChild(text);
+					var text = data[i].name + ' - ' + data[i].lineStatuses[0].statusSeverityDescription;
+					bus24.innerHTML = text;
+					bus24.classList.remove('hidden');
 				} else if (data[i].name =='134') {
-					text.innerHTML = data[i].name + ' - ' + data[i].lineStatuses[0].statusSeverityDescription + '\n';
-					bus134.appendChild(text);
+					var text = data[i].name + ' - ' + data[i].lineStatuses[0].statusSeverityDescription;
+					bus134.innerHTML = text;
+					bus134.classList.remove('hidden');
 				}
 			};
 			setTimeout(getBus, 300000);
@@ -117,7 +109,7 @@ function getSilverdale() {
 			for (let i = 0; i < data.length; i++) {
 				if (data[i].lineId == '24' || data[i].lineId == '134') {
 					const text = document.createElement('P');
-					text.innerHTML = data[i].lineId + ' - ' + (Math.round(data[i].timeToStation / 60)) + 'mins';
+					text.innerHTML = data[i].lineId + ' - ' + (Math.round(data[i].timeToStation / 60)) + ' mins';
 					silverdale.appendChild(text);
 				}	
 			};
@@ -184,7 +176,7 @@ function getweather() {
 		.then(data => {
 			var iconRequest = data.currently.icon;
 			var iconToday = data.hourly.icon;
-			var icons = new Skycons({'color': '#000000'});
+			var icons = new Skycons({'color': 'black'});
 			var iconList = [
 				"clear-day",
 				"clear-night",
@@ -241,8 +233,8 @@ function getweather() {
 function getTime(){
 	var time = new Date().toString().split(' ');
 	time = time.slice(0,5);
-	time = time[0] + ' ' + time[1] + ' ' + time[2] + ' ' + time[3] + ' ' + time[4] + ' ';
-	current_time.innerHTML = time;
+	current_date.innerHTML = time[0] + ' ' + time[1] + ' ' + time[2] + ' ' + time[3];
+	current_time.innerHTML = time[4];
 	setTimeout(getTime, 1000);
 }
 

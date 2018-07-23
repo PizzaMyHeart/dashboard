@@ -2,15 +2,33 @@
 	<head>
 		<script src='https://darkskyapp.github.io/skycons/skycons.js'></script>
 		<link rel='stylesheet' type='text/css' href='style.css'>
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 		<title>Dashboard</title>
 	</head>
 
 	<body>
-		<h1>Welcome, Ian.</h1>
-		<div id='today-summary'></div>
-		<div id='weather-container'>
-			<div id='current-weather-container'>
+		<header>
+			<div id='travel-time'>
+				<div id='rf'></div>
+				<div id='whit'></div>
+			</div>	
+			<div id='welcome'>
+				<div id='current-date'></div>
 				<div id='current-time'></div>
+				<h5>Welcome, Ian.</h5>
+			</div>
+			<div>
+				<div id='bus24'></div>
+				<div id='bus134'></div>
+			</div>
+		</header>
+		
+		
+		<div id='top-container'>
+
+			<div id='current-weather-container'>
+				<div>Current weather</div>
 				<canvas id='icon-currently'></canvas>
 				<div id='current-weather'></div>
 				<div id='current-temp'></div>
@@ -18,10 +36,14 @@
 			<div>
 				<div>Today's forecast</div>
 				<canvas id='icon-today'></canvas>
+				<div id='minutely-summary'></div>
+				<div id='today-summary'></div>
+
 			</div>
 			
-			<div id='minutely-summary'></div>
-			<div id='hourly-summary'></div>
+			<div id='arrival-time'>
+				<div id='silverdale'></div>
+			</div>
 	
 		</div>
 		<div id='week-forecast'></div>
@@ -69,34 +91,12 @@
 				<div class='temp-low'><img src='/assets/svg/Moon.svg' class='climacons'><div></div></div>
 			</div>
 		</div>
-
-		<div id='travel-container'>
-			<div id='travel-status'>
-				<div id='tube'></div>
-				<div id='bus24'></div>
-				<div id='bus134'></div>
-			</div>
-			<div id='arrival-time'>
-				<div id='silverdale'></div>
-			</div>
-			<div id='travel-time'>
-				<div id='rf'></div>
-				<div id='whit'></div>
-			</div>	
-		</div>
 		
-		
-		
-		
+		<div id='tube'></div>
 
 		<div class='ticker-wrap'>
 			<div class='ticker' id='news-container'></div>
 		</div>
-		
-
-
-
-
 		
 
 		<script src='script.js'></script>
