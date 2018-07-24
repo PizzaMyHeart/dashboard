@@ -14,6 +14,7 @@ const silverdale = document.getElementById('silverdale');
 const news_container = document.getElementById('news-container');
 const current_date = document.getElementById('current-date');
 const current_time = document.getElementById('current-time');
+const northern = document.getElementById('northern');
 
 window.onload = function() {
 	getNews(); getTube(); getrf(); getwhit(); getweather(); getBus(); getSilverdale();
@@ -62,6 +63,9 @@ function getTube() {
 					tube.appendChild(text);
 					tube.childNodes[i].classList.add('slide');
 				};
+				if (data[i].name == 'Northern') {
+					northern.innerHTML = data[i].name + ' - ' + data[i].lineStatuses[0].statusSeverityDescription;
+				}
 			};
 			var current = 0,
     			slides = document.getElementsByClassName('slide');
@@ -124,7 +128,7 @@ function getSilverdale() {
 					silverdale.appendChild(text);
 				}	
 			};
-			setTimeout(getSilverdale, 300000);
+			setTimeout(getSilverdale, 1000);
 		})
 		.catch(function(err) {
 			console.error(err);
