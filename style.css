@@ -56,7 +56,7 @@
 #top-container {
 	display: flex;
 	flex-flow: row wrap;
-	justify-content: space-between;
+	justify-content: space-around;
 	font-size: smaller;	
 	font-weight: bold;
 }
@@ -78,13 +78,20 @@ canvas {
 }
 
 #tube {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-around;
 	font-size: medium;
 	padding: 0 10px;
 	margin-top: 3%;
+	text-align: center;
 }
+
+
+.slide {
+	position: absolute;
+	transition: opacity .5s ease-in;
+	text-align: center;
+}
+
+.slide + .slide { opacity: 0; }
 
 #travel-time {
 	font-size: smaller;
@@ -97,7 +104,7 @@ canvas {
 
 .icon-day {
 	height: 5%;
-	width: 30%;
+	width: 40%;
 }
 
 #this-week {
@@ -137,8 +144,8 @@ header {
 	text-align: center;
 	display: flex;
 	flex-flow: row auto;
-	flex: 2 1 auto;
-	justify-content: space-between;
+	flex: 1 1 auto;
+	justify-content: center;
 }
 
 .hidden {
@@ -165,4 +172,12 @@ header {
 #this-week > div {
 	box-shadow: 0 5px 5px -5px grey;
 }
+
+#bottom-container {
+	display: flex;
+	flex-flow: row auto;
+	justify-content: space-around;
+	margin-top: 3%;
+}
+
 
