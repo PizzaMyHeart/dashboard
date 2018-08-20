@@ -70,7 +70,8 @@
 
 #week-forecast {
 	text-align: center;
-	margin: 1% 0 3% 0;
+	margin: 3% 0 3% 0;
+	font-style: italic;
 }
 
 canvas {
@@ -79,24 +80,66 @@ canvas {
 }
 
 #tube {
-	font-size: medium;
+	font-size: 1em;
 	padding: 0 10px;
 	text-align: center;
 	width: 253.688px;
+	color: white;
 }
 
-
-.slide {
-	position: absolute;
-	transition: opacity .5s ease-in;
-	text-align: center;
-	padding: 0 2px;
+#tube > div {
+	padding: 10px;
 }
 
-.slide + .slide { opacity: 0; }
+#northern {
+	background-color: black;
+}
+
+#bakerloo {
+	background-color: #A45A2A;
+}
+
+#victoria {
+	background-color: #00A3E0;
+}
+
+#circle {
+	background-color: #F5CB08;
+	color: black;
+}
+
+#district {
+	background-color: #007A33;
+}
+
+#hammersmith-city {
+	background-color: #E89CAE;
+	color: black;
+}
+
+#waterloo-city {
+	background-color: #6ECEB2;
+	color: black;
+}
+
+#central {
+	background-color: #DA291C;
+}
+
+#piccadilly {
+	background-color: #10069F;
+}
+
+#jubilee {
+	background-color: #7C878E;
+}
+
+#metropolitan {
+	background-color: #840B55
+}
 
 #travel-time {
-	font-size: smaller;
+	font-size: medium;
 }
 
 .climacons {
@@ -105,8 +148,8 @@ canvas {
 }
 
 .icon-day {
-	height: 5%;
-	width: 40%;
+	height: 50px;
+	width: 80px;
 }
 
 #this-week {
@@ -118,7 +161,7 @@ canvas {
 }
 
 #this-week > div {
-	width: 12%;
+	width: 13%;
 }
 
 .day {
@@ -139,7 +182,7 @@ canvas {
 body {
   	padding-bottom: 5rem;
   	font-family: 'Roboto', sans-serif;
-  	background-color: #f4f4f4;
+  	background-color: #f0ead6;
 }
 
 
@@ -158,7 +201,7 @@ header {
 
 #current-time {
 	font-family: 'Ubuntu', sans-serif;
-	font-size: xx-large;
+	font-size: 3em;
 	font-weight: bolder;
 }
 

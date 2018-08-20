@@ -15,6 +15,16 @@ const news_container = document.getElementById('news-container');
 const current_date = document.getElementById('current-date');
 const current_time = document.getElementById('current-time');
 const northern = document.getElementById('northern');
+const bakerloo = document.getElementById('bakerloo');
+const central = document.getElementById('central');
+const victoria = document.getElementById('victoria');
+const circle = document.getElementById('circle');
+const district = document.getElementById('district');
+const hammersmith_city = document.getElementById('hammersmith-city');
+const jubilee = document.getElementById('jubilee');
+const waterloo_city = document.getElementById('waterloo-city');
+const piccadilly = document.getElementById('piccadilly');
+const metropolitan = document.getElementById('metropolitan');
 
 window.onload = function() {
 	getNews(); getTube(); getrf(); getwhit(); getweather(); getBus(); getSilverdale();
@@ -54,28 +64,31 @@ function getTube() {
 		.then(resp => resp.json())
 		.then(data => {
 			for (let i = 0; i < data.length; i++) {
-				const text = document.createElement('div');
-				text.innerHTML = data[i].name + ' - ' + data[i].lineStatuses[0].statusSeverityDescription;
-				if (tube.childNodes[i]) {
-					tube.childNodes[i].innerHTML = data[i].name + ' - ' + data[i].lineStatuses[0].statusSeverityDescription;
-					tube.childNodes[i].classList.add('slide');
-				} else {
-					tube.appendChild(text);
-					tube.childNodes[i].classList.add('slide');
-				};
 				if (data[i].name == 'Northern') {
 					northern.innerHTML = data[i].name + ' - ' + data[i].lineStatuses[0].statusSeverityDescription;
+				} else if(data[i].name == 'Bakerloo') {
+					bakerloo.innerHTML = data[i].name + ' - ' + data[i].lineStatuses[0].statusSeverityDescription;
+				} else if(data[i].name == 'Victoria') {
+					victoria.innerHTML = data[i].name + ' - ' + data[i].lineStatuses[0].statusSeverityDescription;
+				} else if(data[i].name == 'Circle') {
+					circle.innerHTML = data[i].name + ' - ' + data[i].lineStatuses[0].statusSeverityDescription;
+				} else if(data[i].name == 'District') {
+					district.innerHTML = data[i].name + ' - ' + data[i].lineStatuses[0].statusSeverityDescription;
+				} else if(data[i].name == 'Waterloo & City') {
+					waterloo_city.innerHTML = data[i].name + ' - ' + data[i].lineStatuses[0].statusSeverityDescription;
+				} else if(data[i].name == 'Hammersmith & City') {
+					hammersmith_city.innerHTML = data[i].name + ' - ' + data[i].lineStatuses[0].statusSeverityDescription;
+				} else if(data[i].name == 'Metropolitan') {
+					metropolitan.innerHTML = data[i].name + ' - ' + data[i].lineStatuses[0].statusSeverityDescription;
+				} else if(data[i].name == 'Jubilee') {
+					jubilee.innerHTML = data[i].name + ' - ' + data[i].lineStatuses[0].statusSeverityDescription;
+				} else if(data[i].name == 'Piccadilly') {
+					piccadilly.innerHTML = data[i].name + ' - ' + data[i].lineStatuses[0].statusSeverityDescription;
+				} else if(data[i].name == 'Central') {
+					central.innerHTML = data[i].name + ' - ' + data[i].lineStatuses[0].statusSeverityDescription;
 				}
 			};
-			var current = 0,
-    			slides = document.getElementsByClassName('slide');
-			setInterval(function() {
-	  			for (let i = 0; i < slides.length; i++) {
-	    			slides[i].style.opacity = 0;
-	  			}
-	  			current = (current != slides.length - 1) ? current + 1 : 0;
-	  			slides[current].style.opacity = 1;
-			}, 3000);
+			
 			setTimeout(getTube, 300000);
 		})
 		.catch(function(err) {
@@ -147,7 +160,7 @@ function getrf() {
 	fetch(url, { method: 'get' })
 		.then(resp => resp.json())
 		.then(data => {
-			const text = document.createElement('P');
+			const text = document.createElement('div');
 			text.innerHTML = data.travel_time_minutes + ' mins to Royal Free';
 			if (rf.hasChildNodes()) {
 				rf.childNodes.innerHTML = data.travel_time_minutes + ' mins to Royal Free';
@@ -168,7 +181,7 @@ function getwhit() {
 	fetch(url, { method: 'get' })
 		.then(resp => resp.json())
 		.then(data => {
-			const text = document.createElement('P');
+			const text = document.createElement('div');
 			text.innerHTML = data.travel_time_minutes + ' mins to Whittington';
 			if (whit.hasChildNodes()) {
 				whit.childNodes.innerHTML = data.travel_time_minutes + ' mins to Whittington';
